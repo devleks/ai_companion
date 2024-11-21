@@ -33,6 +33,87 @@ Edit `.env` and add your OpenAI API key:
 OPENAI_API_KEY=your-api-key-here
 ```
 
+## Docker Setup
+
+### Prerequisites
+- Docker installed on your system
+- Docker Compose installed on your system
+
+### Quick Start with Docker
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/ai_companion.git
+cd ai_companion
+```
+
+2. Set up environment variables:
+```bash
+cp .env.example .env
+```
+Edit `.env` and add your OpenAI API key:
+```
+OPENAI_API_KEY=your-api-key-here
+```
+
+3. Build and start the container:
+```bash
+docker-compose up -d --build
+```
+
+4. Access the container shell:
+```bash
+docker-compose exec ai_companion bash
+```
+
+5. Run the AI Companion inside the container:
+```bash
+python main.py
+```
+
+### Container Management
+
+- Stop the container:
+```bash
+docker-compose down
+```
+
+- View container logs:
+```bash
+docker-compose logs -f
+```
+
+- Restart the container:
+```bash
+docker-compose restart
+```
+
+### Development with Docker
+
+1. The `./data` directory is mounted to persist conversation history and memory
+2. Code changes in your local directory are immediately reflected in the container
+3. You can open multiple shell sessions to the same container
+4. Use `ctrl + d` or type `exit` to leave the container shell (container keeps running)
+
+### Troubleshooting
+
+If you can't access the shell:
+
+1. Check container status:
+```bash
+docker-compose ps
+```
+
+2. View container logs:
+```bash
+docker-compose logs ai_companion
+```
+
+3. Rebuild if necessary:
+```bash
+docker-compose up -d --build
+```
+
 ## Usage
 
 1. Run the AI Companion:
