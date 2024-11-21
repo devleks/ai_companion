@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  ai_companion:
+    build: .
+    container_name: ai_companion
+    volumes:
+      - ./data:/app/data  # Persist conversation history and memory
+    env_file:
+      - .env  # Load environment variables from .env file
+    stdin_open: true  # Keep STDIN open
+    tty: true        # Allocate a pseudo-TTY
+    restart: unless-stopped
